@@ -77,9 +77,6 @@ class NetworkAlbert(object):
                                                 
             ckpt = tf.train.get_checkpoint_state(hp.saved_model_path)
             checkpoint_suffix = ".index"
-            print('='*30)
-            print('ckpt:',ckpt)
-            #print('checkpoint_suffix:',ckpt.model_checkpoint_path + checkpoint_suffix)
             if ckpt and tf.gfile.Exists(ckpt.model_checkpoint_path + checkpoint_suffix):
                 print('='*10,'Restoring model from checkpoint!','='*10)
                 print("%s - Restoring model from checkpoint ~%s" % (time_now_string(),
@@ -92,8 +89,7 @@ class NetworkAlbert(object):
                      modeling.get_assignment_map_from_checkpoint(tvars,
                                                                  hp.init_checkpoint)
                    tf.train.init_from_checkpoint(hp.init_checkpoint, assignment_map)
-                                
-                
+                                                
             if self.is_training:
                 # Global_step
                 self.global_step = tf.Variable(0, name='global_step', trainable=False)
