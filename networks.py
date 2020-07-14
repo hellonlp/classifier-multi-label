@@ -49,9 +49,9 @@ class NetworkAlbert(object):
         output_layer = cell_textcnn(output_layer_init,self.is_training)
 
         # Hidden size 
-        hidden_size = output_layer.shape[-1].value         
-                    
-
+        hidden_size = output_layer.shape[-1].value                             
+        
+	# Full connection
         with tf.name_scope("Full-connection"):  
             output_weights = tf.get_variable(
                   "output_weights", [num_labels, hidden_size],
@@ -61,10 +61,10 @@ class NetworkAlbert(object):
             logits = tf.nn.bias_add(tf.matmul(output_layer, output_weights, transpose_b=True), output_bias)            
             # Prediction sigmoid(Multi-label)
             self.probabilities = tf.nn.sigmoid(logits)
- 
-
+ 	
+	# Prediction  
         with tf.variable_scope("Prediction"):             
-            # Prediction               
+                         
             zero = tf.zeros_like(logits)  
             one = tf.ones_like(logits)       
             self.predictions = tf.where(logits <0.5, x=zero, y=one)    
