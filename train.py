@@ -19,22 +19,19 @@ pwd = os.path.dirname(os.path.abspath(__file__))
 MODEL = NetworkAlbert(is_training=True)
 
 
-
-
-# Get features
+# Get data features
 input_ids,input_masks,segment_ids,label_ids = get_features()
-N = len(input_ids)
-arr = np.arange(N)               
-num_batchs = int((N - 1) /hp.batch_size) + 1
+num_train_samples = len(input_ids)
+arr = np.arange(num_train_samples)               
+num_batchs = int((num_train_samples - 1) /hp.batch_size) + 1
+print('Number of batch:',num_batchs)
 
 
-# Graph session
+# Set up the graph 
 saver = tf.train.Saver(max_to_keep=100)
 sess = tf.Session()
 sess.run(tf.global_variables_initializer())
-
-
-# Load model saved
+# Load model saved before
 MODEL_SAVE_PATH = os.path.join(pwd,'model')
 ckpt = tf.train.get_checkpoint_state(MODEL_SAVE_PATH)
 if ckpt and ckpt.model_checkpoint_path:
@@ -42,15 +39,13 @@ if ckpt and ckpt.model_checkpoint_path:
      print('Restored model!')
 
 
-# Start training
 with sess.as_default():
-    ## Tensorboard writer
+    # Tensorboard writer
     writer = tf.summary.FileWriter('logdir/model_01', sess.graph)
-    print('2'*10)
-    for i in range(hp.num_train_epochs):
+    for i in range(hp.n_epoch):
         indexs = shuffle_one(arr)
-        for batch_num in range(num_batchs-1):
-            i1 = indexs[batch_num * hp.batch_size:min((batch_num + 1) * hp.batch_size, N)]
+        for j in range(num_batchs-1):
+            i1 = indexs[j * hp.batch_size:min((j + 1) * hp.batch_size, num_train_samples)]
             # Get features
             input_id_ = select(input_ids,i1)
             input_mask_ = select(input_masks,i1)
@@ -62,24 +57,24 @@ with sess.as_default():
                   MODEL.segment_ids:segment_id_,
                   MODEL.label_ids:label_id_}
             # Optimizer
-            sess.run(MODEL.optimizer, feed_dict = fd)           
+            sess.run(MODEL.optimizer, feed_dict = fd)            
             # Tensorboard
-            if batch_num%summary_step==0:
+            if j%hp.summary_step==0:
                 summary,glolal_step = sess.run([MODEL.merged,MODEL.global_step], feed_dict = fd)
-                writer.add_summary(summary, glolal_step)              
+                writer.add_summary(summary, glolal_step)                
             # Save Model
-            if batch_num%save_model_step==0:
-                print ('epoch:',i,'batch_num:',batch_num)
-                saver.save(sess, os.path.join(pwd, 'model', 'model'+'_%s_%s.ckpt'%(str(i),str(batch_num))))
+            if j%(num_batchs//3)==0:
+                saver.save(sess, os.path.join(pwd, 'model', 'model'+'_%s_%s.ckpt'%(str(i),str(j))))            
             # Log
-            if batch_num%hp.print_step == 0:
+            if j % hp.print_step == 0:
                 fd = {MODEL.input_ids: input_id_,
                       MODEL.input_masks: input_mask_,
                       MODEL.segment_ids:segment_id_,
                       MODEL.label_ids:label_id_}
                 loss = sess.run(MODEL.loss, feed_dict = fd)
-                print('Time:%s, Epoch:%s, Batch number:%s, Loss%s'%(time_now_string(),str(i),str(batch_num),str()loss))                            
+                print('Time:%s, Epoch:%s, Batch number:%s, Loss%s'%(time_now_string(),str(i),str(j),str(loss)))   
     print('Optimization finished')
+    
     
     
     
