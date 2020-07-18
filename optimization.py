@@ -10,7 +10,7 @@ import six
 from six.moves import zip
 import tensorflow.compat.v1 as tf
 from tensorflow.contrib import tpu as contrib_tpu
-from classification_multi_label_textcnn  import lamb_optimizer
+from classifier_multi_label_textcnn  import lamb_optimizer
 
 
 
