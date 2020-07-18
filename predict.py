@@ -12,8 +12,8 @@ pwd = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import numpy as np
 import tensorflow as tf
-from classification_multi_label_01.networks import NetworkAlbert
-from classification_multi_label_01.classifier_utils import get_feature_test,id2label
+from classifier_multi_label_textcnn.networks import NetworkAlbert
+from classifier_multi_label_textcnn.classifier_utils import get_feature_test,id2label
 
           
 
