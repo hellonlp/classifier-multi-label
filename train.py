@@ -9,10 +9,10 @@ import os
 #os.environ["CUDA_VISIBLE_DEVICES"] = '-1'
 import numpy as np
 import tensorflow as tf
-from classification_multi_label_01.networks import NetworkAlbert
-from classification_multi_label_01.classifier_utils import get_features
-from classification_multi_label_01.hyperparameters import Hyperparamters as hp
-from classification_multi_label_01.utils import select,shuffle_one,time_now_string
+from classifier_multi_label_textcnn.networks import NetworkAlbert
+from classifier_multi_label_textcnn.classifier_utils import get_features
+from classifier_multi_label_textcnn.hyperparameters import Hyperparamters as hp
+from classifier_multi_label_textcnn.utils import select,shuffle_one,time_now_string
 
 
 pwd = os.path.dirname(os.path.abspath(__file__))
