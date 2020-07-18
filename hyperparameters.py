@@ -16,7 +16,7 @@ from classifier_multi_label_textcnn.utils import load_vocabulary
 
 
 class Hyperparamters:
-    # Parameters    
+    # Train Parameters    
     print_step = 100
     summary_step = 10
     save_model_step = 300
@@ -24,6 +24,7 @@ class Hyperparamters:
     batch_size = 64          
     batch_size_predict = 1
     learning_rate = 5e-5 
+    num_saved_per_epoch = 3
     
     # Load dict
     dict_id2label,dict_label2id = load_vocabulary(os.path.join(pwd,'data','vocabulary_label.txt') )
