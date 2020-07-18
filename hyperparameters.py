@@ -11,7 +11,7 @@ import os
 import sys
 pwd = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(pwd)
-from classification_multi_label_01.utils import load_vocabulary
+from classification_multi_label_textcnn.utils import load_vocabulary
 
 
 
