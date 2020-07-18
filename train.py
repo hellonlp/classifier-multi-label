@@ -63,7 +63,7 @@ with sess.as_default():
                 summary,glolal_step = sess.run([MODEL.merged,MODEL.global_step], feed_dict = fd)
                 writer.add_summary(summary, glolal_step)                
             # Save Model
-            if j%(num_batchs//3)==0:
+            if j%(num_batchs//num_saved_per_epoch)==0:
                 saver.save(sess, os.path.join(pwd, 'model', 'model'+'_%s_%s.ckpt'%(str(i),str(j))))            
             # Log
             if j % hp.print_step == 0:
