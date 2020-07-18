@@ -8,7 +8,7 @@ Created on Thu May 30 21:01:45 2019
 
 import tensorflow as tf
 from tensorflow.contrib.rnn import DropoutWrapper
-from classification_multi_label_textcnn.hyperparameters import Hyperparamters as hp
+from classifier_multi_label_textcnn.hyperparameters import Hyperparamters as hp
 
 
 
