@@ -13,10 +13,10 @@ from tensorflow.contrib import data as contrib_data
 from tensorflow.contrib import metrics as contrib_metrics
 from tensorflow.contrib import tpu as contrib_tpu
 
-from classification_multi_label_01 import modeling
-from classification_multi_label_01 import optimization
-from classification_multi_label_01 import tokenization
-from classification_multi_label_01.hyperparameters import Hyperparamters as hp
+from classification_multi_label_textcnn import modeling
+from classification_multi_label_textcnn import optimization
+from classification_multi_label_textcnn import tokenization
+from classification_multi_label_textcnn.hyperparameters import Hyperparamters as hp
 
 
 
