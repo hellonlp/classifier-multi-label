@@ -205,435 +205,6 @@ class ClassifyProcessor(DataProcessor):
             # print(examples)
         return examples
     
-    
-    
-class MnliProcessor(DataProcessor):
-  """Processor for the MultiNLI data set (GLUE version)."""
-
-  def get_train_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "MNLI", "train.tsv")), "train")
-
-  def get_dev_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "MNLI", "dev_matched.tsv")),
-        "dev_matched")
-
-  def get_test_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "MNLI", "test_matched.tsv")),
-        "test")
-
-  def get_labels(self):
-    """See base class."""
-    return ["contradiction", "entailment", "neutral"]
-
-  def _create_examples(self, lines, set_type):
-    """Creates examples for the training and dev sets."""
-    examples = []
-    for (i, line) in enumerate(lines):
-      if i == 0:
-        continue
-      # Note(mingdachen): We will rely on this guid for GLUE submission.
-      guid = self.process_text(line[0])
-      text_a = self.process_text(line[8])
-      text_b = self.process_text(line[9])
-      if set_type == "test":
-        label = "contradiction"
-      else:
-        label = self.process_text(line[-1])
-      examples.append(
-          InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
-    return examples
-
-
-class MisMnliProcessor(MnliProcessor):
-  """Processor for the Mismatched MultiNLI data set (GLUE version)."""
-
-  def get_dev_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "MNLI", "dev_mismatched.tsv")),
-        "dev")
-
-  def get_test_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "MNLI", "test_mismatched.tsv")),
-        "test")
-
-
-class MrpcProcessor(DataProcessor):
-  """Processor for the MRPC data set (GLUE version)."""
-
-  def get_train_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "MRPC", "train.tsv")), "train")
-
-  def get_dev_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "MRPC", "dev.tsv")), "dev")
-
-  def get_test_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "MRPC", "test.tsv")), "test")
-
-  def get_labels(self):
-    """See base class."""
-    return ["0", "1"]
-
-  def _create_examples(self, lines, set_type):
-    """Creates examples for the training and dev sets."""
-    examples = []
-    for (i, line) in enumerate(lines):
-      if i == 0:
-        continue
-      guid = "%s-%s" % (set_type, i)
-      text_a = self.process_text(line[3])
-      text_b = self.process_text(line[4])
-      if set_type == "test":
-        guid = line[0]
-        label = "0"
-      else:
-        label = self.process_text(line[0])
-      examples.append(
-          InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
-    return examples
-
-
-class ColaProcessor(DataProcessor):
-  """Processor for the CoLA data set (GLUE version)."""
-
-  def get_train_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "CoLA", "train.tsv")), "train")
-
-  def get_dev_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "CoLA", "dev.tsv")), "dev")
-
-  def get_test_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "CoLA", "test.tsv")), "test")
-
-  def get_labels(self):
-    """See base class."""
-    return ["0", "1"]
-
-  def _create_examples(self, lines, set_type):
-    """Creates examples for the training and dev sets."""
-    examples = []
-    for (i, line) in enumerate(lines):
-      # Only the test set has a header
-      if set_type == "test" and i == 0:
-        continue
-      guid = "%s-%s" % (set_type, i)
-      if set_type == "test":
-        guid = line[0]
-        text_a = self.process_text(line[1])
-        label = "0"
-      else:
-        text_a = self.process_text(line[3])
-        label = self.process_text(line[1])
-      examples.append(
-          InputExample(guid=guid, text_a=text_a, text_b=None, label=label))
-    return examples
-
-
-class Sst2Processor(DataProcessor):
-  """Processor for the SST-2 data set (GLUE version)."""
-
-  def get_train_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "SST-2", "train.tsv")), "train")
-
-  def get_dev_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "SST-2", "dev.tsv")), "dev")
-
-  def get_test_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "SST-2", "test.tsv")), "test")
-
-  def get_labels(self):
-    """See base class."""
-    return ["0", "1"]
-
-  def _create_examples(self, lines, set_type):
-    """Creates examples for the training and dev sets."""
-    examples = []
-    for (i, line) in enumerate(lines):
-      if i == 0:
-        continue
-      if set_type != "test":
-        guid = "%s-%s" % (set_type, i)
-        text_a = self.process_text(line[0])
-        label = self.process_text(line[1])
-      else:
-        guid = self.process_text(line[0])
-        # guid = "%s-%s" % (set_type, line[0])
-        text_a = self.process_text(line[1])
-        label = "0"
-      examples.append(
-          InputExample(guid=guid, text_a=text_a, text_b=None, label=label))
-    return examples
-
-
-class StsbProcessor(DataProcessor):
-  """Processor for the STS-B data set (GLUE version)."""
-
-  def get_train_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "STS-B", "train.tsv")), "train")
-
-  def get_dev_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "STS-B", "dev.tsv")), "dev")
-
-  def get_test_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "STS-B", "test.tsv")), "test")
-
-  def get_labels(self):
-    """See base class."""
-    return [None]
-
-  def _create_examples(self, lines, set_type):
-    """Creates examples for the training and dev sets."""
-    examples = []
-    for (i, line) in enumerate(lines):
-      if i == 0:
-        continue
-      guid = self.process_text(line[0])
-      # guid = "%s-%s" % (set_type, line[0])
-      text_a = self.process_text(line[7])
-      text_b = self.process_text(line[8])
-      if set_type != "test":
-        label = float(line[-1])
-      else:
-        label = 0
-      examples.append(
-          InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
-    return examples
-
-
-class QqpProcessor(DataProcessor):
-  """Processor for the QQP data set (GLUE version)."""
-
-  def get_train_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "QQP", "train.tsv")), "train")
-
-  def get_dev_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "QQP", "dev.tsv")), "dev")
-
-  def get_test_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "QQP", "test.tsv")), "test")
-
-  def get_labels(self):
-    """See base class."""
-    return ["0", "1"]
-
-  def _create_examples(self, lines, set_type):
-    """Creates examples for the training and dev sets."""
-    examples = []
-    for (i, line) in enumerate(lines):
-      if i == 0:
-        continue
-      guid = line[0]
-      # guid = "%s-%s" % (set_type, line[0])
-      if set_type != "test":
-        try:
-          text_a = self.process_text(line[3])
-          text_b = self.process_text(line[4])
-          label = self.process_text(line[5])
-        except IndexError:
-          continue
-      else:
-        text_a = self.process_text(line[1])
-        text_b = self.process_text(line[2])
-        label = "0"
-      examples.append(
-          InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
-    return examples
-
-
-class QnliProcessor(DataProcessor):
-  """Processor for the QNLI data set (GLUE version)."""
-
-  def get_train_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "QNLI", "train.tsv")), "train")
-
-  def get_dev_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "QNLI", "dev.tsv")),
-        "dev_matched")
-
-  def get_test_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "QNLI", "test.tsv")),
-        "test_matched")
-
-  def get_labels(self):
-    """See base class."""
-    return ["entailment", "not_entailment"]
-
-  def _create_examples(self, lines, set_type):
-    """Creates examples for the training and dev sets."""
-    examples = []
-    for (i, line) in enumerate(lines):
-      if i == 0:
-        continue
-      guid = self.process_text(line[0])
-      # guid = "%s-%s" % (set_type, line[0])
-      text_a = self.process_text(line[1])
-      text_b = self.process_text(line[2])
-      if set_type == "test_matched":
-        label = "entailment"
-      else:
-        label = self.process_text(line[-1])
-      examples.append(
-          InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
-    return examples
-
-
-class RteProcessor(DataProcessor):
-  """Processor for the RTE data set (GLUE version)."""
-
-  def get_train_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "RTE", "train.tsv")), "train")
-
-  def get_dev_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "RTE", "dev.tsv")), "dev")
-
-  def get_test_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "RTE", "test.tsv")), "test")
-
-  def get_labels(self):
-    """See base class."""
-    return ["entailment", "not_entailment"]
-
-  def _create_examples(self, lines, set_type):
-    """Creates examples for the training and dev sets."""
-    examples = []
-    for (i, line) in enumerate(lines):
-      if i == 0:
-        continue
-      guid = self.process_text(line[0])
-      # guid = "%s-%s" % (set_type, line[0])
-      text_a = self.process_text(line[1])
-      text_b = self.process_text(line[2])
-      if set_type == "test":
-        label = "entailment"
-      else:
-        label = self.process_text(line[-1])
-      examples.append(
-          InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
-    return examples
-
-
-class WnliProcessor(DataProcessor):
-  """Processor for the WNLI data set (GLUE version)."""
-
-  def get_train_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "WNLI", "train.tsv")), "train")
-
-  def get_dev_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "WNLI", "dev.tsv")), "dev")
-
-  def get_test_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "WNLI", "test.tsv")), "test")
-
-  def get_labels(self):
-    """See base class."""
-    return ["0", "1"]
-
-  def _create_examples(self, lines, set_type):
-    """Creates examples for the training and dev sets."""
-    examples = []
-    for (i, line) in enumerate(lines):
-      if i == 0:
-        continue
-      guid = self.process_text(line[0])
-      # guid = "%s-%s" % (set_type, line[0])
-      text_a = self.process_text(line[1])
-      text_b = self.process_text(line[2])
-      if set_type != "test":
-        label = self.process_text(line[-1])
-      else:
-        label = "0"
-      examples.append(
-          InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
-    return examples
-
-
-class AXProcessor(DataProcessor):
-  """Processor for the AX data set (GLUE version)."""
-
-  def get_test_examples(self, data_dir):
-    """See base class."""
-    return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "diagnostic", "diagnostic.tsv")),
-        "test")
-
-  def get_labels(self):
-    """See base class."""
-    return ["contradiction", "entailment", "neutral"]
-
-  def _create_examples(self, lines, set_type):
-    """Creates examples for the training and dev sets."""
-    examples = []
-    for (i, line) in enumerate(lines):
-      if i == 0:
-        continue
-      # Note(mingdachen): We will rely on this guid for GLUE submission.
-      guid = self.process_text(line[0])
-      text_a = self.process_text(line[1])
-      text_b = self.process_text(line[2])
-      if set_type == "test":
-        label = "contradiction"
-      else:
-        label = self.process_text(line[-1])
-      examples.append(
-          InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
-    return examples
-
 
 def convert_single_example(ex_index, example, label_list, max_seq_length,
                            tokenizer, task_name):
@@ -1143,16 +714,10 @@ def convert_examples_to_features(examples, label_list, max_seq_length,
   """Convert a set of `InputExample`s to a list of `InputFeatures`."""
 
   features = []
-  #print('1'*20)
   print('Length of examples:',len(examples))
   for (ex_index, example) in enumerate(examples):
-    #print('2'*20)
-    #print('ex_index:',ex_index)
     if ex_index % 10000 == 0:
-      #print('3'*20) 
-      #tf.logging.info("Writing example %d of %d" % (ex_index, len(examples)))
       print("Writing example %d of %d" % (ex_index, len(examples)))
-    #print('4'*20)
     feature = convert_single_example(ex_index, example, label_list,
                                      max_seq_length, tokenizer, task_name)
 
@@ -1160,25 +725,22 @@ def convert_examples_to_features(examples, label_list, max_seq_length,
   return features
 
 
-# 超参设置
+# Load parameters
 max_seq_length = hp.sequence_length
-do_lower_case = hp.do_lower_case#True
+do_lower_case = hp.do_lower_case
 vocab_file = hp.vocab_file 
-#分字器
 tokenizer = tokenization.FullTokenizer.from_scratch(vocab_file=vocab_file,
                                                     do_lower_case=do_lower_case, 
                                                     spm_model_file=None)                               
-#任务类型
 processor = ClassifyProcessor() 
-#获取标签
 label_list = processor.get_labels()
-data_dir = hp.data_dir #'E:/asr/classify/data'
+data_dir = hp.data_dir 
 
 
 def get_features():
-    #加载数据
+    # Load train data
     train_examples = processor.get_train_examples(data_dir) 
-    #提取参数
+    # Get onehot feature
     features = convert_examples_to_features( train_examples, label_list, max_seq_length, tokenizer,task_name='classify')
     input_ids = [f.input_ids for f in features]
     input_masks = [f.input_mask for f in features]
@@ -1186,6 +748,19 @@ def get_features():
     label_ids = [f.label_id for f in features]
     print('Get features finished!')
     return input_ids,input_masks,segment_ids,label_ids
+
+def get_features_test():
+    # Load test data
+    train_examples = processor.get_test_examples(data_dir) 
+    # Get onehot feature
+    features = convert_examples_to_features( train_examples, label_list, max_seq_length, tokenizer,task_name='classify_test')
+    input_ids = [f.input_ids for f in features]
+    input_masks = [f.input_mask for f in features]
+    segment_ids = [f.segment_ids for f in features]
+    label_ids = [f.label_id for f in features]
+    print('Get features(test) finished!')
+    return input_ids,input_masks,segment_ids,label_ids
+
 
 def create_example(line,set_type):
     """Creates examples for the training and dev sets."""
@@ -1197,34 +772,14 @@ def create_example(line,set_type):
 
 def get_feature_test(sentence):
     example = create_example(['0',sentence],'test')
-    feature = convert_single_example(0, example, label_list, max_seq_length, tokenizer,task_name='classify')                                    
+    feature = convert_single_example(0, example, label_list,max_seq_length, tokenizer,task_name='classify')                                    
     return feature.input_ids,feature.input_mask,feature.segment_ids,feature.label_id
 
 
 if __name__ == '__main__':
-    ### 数据转换后格式
-    train_examples = processor.get_train_examples(data_dir) 
-    features = convert_examples_to_features(train_examples, 
-                                            label_list, 
-                                            max_seq_length, 
-                                            tokenizer,
-                                            task_name='classify')
-#    ###
-    print(features[2].input_ids)
-    print(features[2].label_id)
-
-#    #print(type(features[2].input_ids))
-#    print(features[2].input_mask,len(features[2].input_mask))
-#    print(features[2].segment_ids,len(features[2].segment_ids))
-#    print(features[2].label_id)
-#    ### 获取参数:train
-#    features = get_features()
-#    print(features)
-    ### 获取参数:test
-    sentence = '运行真心很赞' #'天天向上'#'we like here'
+    #
+    sentence = '天天向上'
     feature = get_feature_test(sentence)
-    print('feature',feature)
-    print('label_id',feature[3])
     
 
     
