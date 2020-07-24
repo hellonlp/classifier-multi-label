@@ -41,7 +41,7 @@ if ckpt and ckpt.model_checkpoint_path:
 
 with sess.as_default():
     # Tensorboard writer
-    writer = tf.summary.FileWriter('logdir/model_01', sess.graph)
+    writer = tf.summary.FileWriter(hp.logdir, sess.graph)
     for i in range(hp.n_epoch):
         indexs = shuffle_one(arr)
         for j in range(num_batchs-1):
