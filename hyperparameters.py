@@ -19,34 +19,30 @@ class Hyperparamters:
     # Train Parameters    
     print_step = 100
     summary_step = 10
-    save_model_step = 300
-    train_rate = 0.999   
     batch_size = 64          
-    batch_size_predict = 1
-    learning_rate = 5e-5 
     num_saved_per_epoch = 3
+    logdir = 'logdir/model_02'
     
     # Load dict
     dict_id2label,dict_label2id = load_vocabulary(os.path.join(pwd,'data','vocabulary_label.txt') )
     label_vocabulary = list(dict_id2label.values())
 
     # Optimization parameters
-    num_train_epochs = 20
-    warmup_proportion = 0.1
     use_tpu = None
+    num_train_epochs = 20
+    warmup_proportion = 0.1   
     do_lower_case = True
-    num_labels = len(list(dict_id2label))
-    num_filters = 128
-
-    # CNN parameters
-    sequence_length = 60 
-    conv1_left = 100
+    learning_rate = 5e-5 
     
     # TextCNN parameters
+    num_filters = 128
     filter_sizes = [2,3,4,5,6,7]
     embedding_size = 384
     keep_prob = 0.5
     
+    # Sequence and Label
+    sequence_length = 60
+    num_labels = len(list(dict_id2label))    
     
     # BERT model
     model = 'albert_small_zh_google'
