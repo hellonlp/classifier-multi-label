@@ -19,7 +19,7 @@ from classifier_multi_label_textcnn.classifier_utils import get_feature_test,id2
 
 class ModelAlbertTextCNN(object,):
     """
-    加载 NetworkAlbert 神经网络模型
+    Load NetworkAlbert TextCNN model
     """
     def __init__(self):
         self.albert, self.sess = self.load_model()
@@ -42,22 +42,7 @@ MODEL = ModelAlbertTextCNN()
 print('Load model finished!')
 
 
-
-def get_probability(sentence):
-    """
-    Prediction of the sentence's sentiment.
-    """
-
-    feature = get_feature_test(sentence)
-    fd = {MODEL.albert.input_ids: [feature[0]],
-          MODEL.albert.input_masks: [feature[1]],
-          MODEL.albert.segment_ids:[feature[2]],
-          }
-    probabilities00,probabilities = MODEL.sess.run([MODEL.albert.probabilities00,MODEL.albert.probabilities], feed_dict=fd)        
-    return probabilities00,probabilities
-
-
-def get_notebook_label(sentence):
+def get_label(sentence):
     """
     Prediction of the sentence's label.
     """
@@ -67,36 +52,15 @@ def get_notebook_label(sentence):
           MODEL.albert.segment_ids:[feature[2]],
           }
     prediction = MODEL.sess.run(MODEL.albert.predictions, feed_dict=fd)[0]     
-    #return [id2label(l[0]) for l in np.where(prediction==1)]    
-    #return [id2label(l[0]) if len(l)>0 else '' for l in np.where(prediction==1)]  
     return [id2label(l) for l in np.where(prediction==1)[0] if l!=0]      
-    
-    
-def get_notebook_label_multi(sentences):
-    """
-    Prediction of some sentence's labels.
-    """
-    features = [get_feature_test(str(sentence)) for sentence in sentences ]
-    fd = {MODEL.albert.input_ids: [feature[0] for feature in features],
-          MODEL.albert.input_masks: [feature[1] for feature in features],
-          MODEL.albert.segment_ids:[feature[2] for feature in features]}    
-    predictions = MODEL.sess.run(MODEL.albert.predictions, feed_dict=fd)   
-    #return [[id2label(l[0]) if len(l)>0 for l in np.where(prediction==1) ]  for prediction in predictions]   
-    #return [[id2label(l[0]) if len(l)>0 else '' for l in np.where(prediction==1) ]  for prediction in predictions]   
-    return [[id2label(l) for l in np.where(prediction==1)[0] if l!=0]  for prediction in predictions]   
-    
-      
 
 
 
 if __name__ == '__main__':
-    ##
-    sent = '品牌很好'
-    sent2 = '风扇噪音大'
+    # Test
     sent3 = '11'
-    sentences = [sent,sent2,sent,sent2,sent3]
-    print(get_notebook_label(sent3))
-    print(get_notebook_label_multi([sent,sent2,sent,sent2,sent3]))
+    print(get_label(sent3))
+
     
 
 
