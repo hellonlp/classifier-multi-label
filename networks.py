@@ -7,13 +7,12 @@ Created on Thu May 30 20:44:42 2019
 
 import os
 import tensorflow as tf
-from classifier_multi_label_textcnn import modeling
-from classifier_multi_label_textcnn import optimization
-from classifier_multi_label_textcnn.modules import cell_textcnn
-from classifier_multi_label_textcnn.utils import time_now_string
-from classifier_multi_label_textcnn.hyperparameters import Hyperparamters as hp
-from classifier_multi_label_textcnn.classifier_utils import ClassifyProcessor
-
+from classifier_notebook import modeling
+from classifier_notebook import optimization
+from classifier_notebook.modules import cell_textcnn
+from classifier_notebook.utils import time_now_string
+from classifier_notebook.hyperparameters import Hyperparamters as hp
+from classifier_notebook.classifier_utils import ClassifyProcessor
 
 
 num_labels = hp.num_labels
@@ -23,7 +22,7 @@ bert_config = modeling.AlbertConfig.from_json_file(bert_config_file)
 
 
 
-class NetworkAlbert(object):
+class NetworkAlbertTextCNN(object):
     def __init__(self,is_training):
         # Training or not
         self.is_training = is_training    
@@ -50,8 +49,7 @@ class NetworkAlbert(object):
         output_layer = cell_textcnn(output_layer_init,self.is_training)
 
         # Hidden size 
-        hidden_size = output_layer.shape[-1].value         
-                    
+        hidden_size = output_layer.shape[-1].value                            
 
         with tf.name_scope("Full-connection"):  
             output_weights = tf.get_variable(
@@ -59,7 +57,9 @@ class NetworkAlbert(object):
                   initializer=tf.truncated_normal_initializer(stddev=0.02))            
             output_bias = tf.get_variable(
                   "output_bias", [num_labels], initializer=tf.zeros_initializer())   
-            logits = tf.nn.bias_add(tf.matmul(output_layer, output_weights, transpose_b=True), output_bias)            
+            logits = tf.nn.bias_add(tf.matmul(output_layer, output_weights, transpose_b=True), output_bias)
+
+
             # Prediction sigmoid(Multi-label)
             self.probabilities = tf.nn.sigmoid(logits)
  
@@ -70,27 +70,21 @@ class NetworkAlbert(object):
             one = tf.ones_like(logits)       
             self.predictions = tf.where(logits <0.5, x=zero, y=one)    
             
+
         with tf.variable_scope("loss"):            
             # Summary for tensorboard
             if self.is_training:
 	            self.accuracy = tf.reduce_mean(tf.to_float(tf.equal(self.predictions, self.label_ids)))
 	            tf.summary.scalar('accuracy', self.accuracy) 
-                
-                                
-            ##查看是否加载过模型
+                                               
+            # Initial embedding by BERT
             ckpt = tf.train.get_checkpoint_state(hp.saved_model_path)
             checkpoint_suffix = ".index"
-            print('='*30)
-            print('ckpt:',ckpt)
-            #print('checkpoint_suffix:',ckpt.model_checkpoint_path + checkpoint_suffix)
             if ckpt and tf.gfile.Exists(ckpt.model_checkpoint_path + checkpoint_suffix):
                 print('='*10,'Restoring model from checkpoint!','='*10)
                 print("%s - Restoring model from checkpoint ~%s" % (time_now_string(),
                                                                     ckpt.model_checkpoint_path))
-                #global_step = int(ckpt.model_checkpoint_path.split('/')[-1].split('-')[-1])
-                #saver.restore(sess, ckpt.model_checkpoint_path) # 不加载  
             else:                   
-                # 加载BERT模型
                 print('='*10,'First time load BERT model!','='*10)
                 tvars = tf.trainable_variables()
                 if hp.init_checkpoint:
@@ -99,14 +93,17 @@ class NetworkAlbert(object):
                                                                  hp.init_checkpoint)
                    tf.train.init_from_checkpoint(hp.init_checkpoint, assignment_map)
                                 
-                
+            # Loss and Optimizer
             if self.is_training:
                 # Global_step
                 self.global_step = tf.Variable(0, name='global_step', trainable=False)
                     
                 per_example_loss = tf.nn.sigmoid_cross_entropy_with_logits(labels=self.label_ids,logits=logits)
+                
+                
                 print('per_example_loss:',per_example_loss)
-                self.loss = tf.reduce_mean(per_example_loss)
+                self.loss = tf.reduce_mean(per_example_loss)              
+
 
                 # Optimizer BERT
                 train_examples = processor.get_train_examples(hp.data_dir)
@@ -128,12 +125,8 @@ class NetworkAlbert(object):
                 
                 
 if __name__ == '__main__':
-    #模型加载
-    albert = NetworkAlbert(is_training=True)
-
-
-
-
+    # Load model
+    albert = NetworkAlbertTextCNN(is_training=True)
 
 
 
