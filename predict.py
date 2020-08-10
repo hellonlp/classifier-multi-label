@@ -12,7 +12,7 @@ pwd = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import numpy as np
 import tensorflow as tf
-from classifier_multi_label_textcnn.networks import NetworkAlbert
+from classifier_multi_label_textcnn.networks import NetworkAlbertTextCNN
 from classifier_multi_label_textcnn.classifier_utils import get_feature_test,id2label
 
           
@@ -29,7 +29,7 @@ class ModelAlbertTextCNN(object,):
             sess = tf.Session()
             out_dir = os.path.join(pwd, "model")
             with sess.as_default():
-                albert =  NetworkAlbert(is_training=False)
+                albert =  NetworkAlbertTextCNN(is_training=False)
                 saver = tf.train.Saver()  
                 sess.run(tf.global_variables_initializer())
                 checkpoint_dir = os.path.abspath(os.path.join(out_dir,'small-google-gelu-V3.0'))
