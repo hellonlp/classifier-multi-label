@@ -1,7 +1,11 @@
-"""The main ALBERT model and related functions.
-
-For a description of the algorithm, see https://arxiv.org/abs/1909.11942.
+# -*- coding: utf-8 -*-
 """
+Created on Wed Jul  8 20:03:12 2020
+
+@author: cm
+"""
+
+
 
 from __future__ import absolute_import
 from __future__ import division
@@ -15,7 +19,6 @@ import re
 import numpy as np
 import six
 from six.moves import range
-#import tensorflow.compat.v1 as tf
 import tensorflow as tf
 from tensorflow.contrib import layers as contrib_layers
 
