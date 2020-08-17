@@ -25,14 +25,12 @@ bert_config = modeling.AlbertConfig.from_json_file(bert_config_file)
 class NetworkAlbertTextCNN(object):
     def __init__(self,is_training):
         # Training or not
-        self.is_training = is_training    
-        
+        self.is_training = is_training            
         # Placeholder       
         self.input_ids = tf.placeholder(tf.int32, shape=[None, hp.sequence_length], name='input_ids')
         self.input_masks = tf.placeholder(tf.int32, shape=[None,  hp.sequence_length], name='input_masks')
         self.segment_ids = tf.placeholder(tf.int32, shape=[None,  hp.sequence_length], name='segment_ids')
-        self.label_ids = tf.placeholder(tf.float32, shape=[None,hp.num_labels], name='label_ids')
-               
+        self.label_ids = tf.placeholder(tf.float32, shape=[None,hp.num_labels], name='label_ids')               
         # Load BERT model
         self.model = modeling.AlbertModel(
                                     config=bert_config,
@@ -41,16 +39,13 @@ class NetworkAlbertTextCNN(object):
                                     input_mask=self.input_masks,
                                     token_type_ids=self.segment_ids,
                                     use_one_hot_embeddings=False)
-
         # Get the feature vector by BERT
         output_layer_init = self.model.get_sequence_output()      
-
-        # Cell cnn
+        # Cell TextCNN
         output_layer = cell_textcnn(output_layer_init,self.is_training)
-
         # Hidden size 
-        hidden_size = output_layer.shape[-1].value                            
-
+        hidden_size = output_layer.shape[-1].value   
+	# Full-connection
         with tf.name_scope("Full-connection"):  
             output_weights = tf.get_variable(
                   "output_weights", [num_labels, hidden_size],
@@ -58,19 +53,13 @@ class NetworkAlbertTextCNN(object):
             output_bias = tf.get_variable(
                   "output_bias", [num_labels], initializer=tf.zeros_initializer())   
             logits = tf.nn.bias_add(tf.matmul(output_layer, output_weights, transpose_b=True), output_bias)
-
-
             # Prediction sigmoid(Multi-label)
             self.probabilities = tf.nn.sigmoid(logits)
- 
-
         with tf.variable_scope("Prediction"):             
             # Prediction               
             zero = tf.zeros_like(logits)  
             one = tf.ones_like(logits)       
             self.predictions = tf.where(logits <0.5, x=zero, y=one)    
-            
-
         with tf.variable_scope("loss"):            
             # Summary for tensorboard
             if self.is_training:
@@ -96,15 +85,9 @@ class NetworkAlbertTextCNN(object):
             # Loss and Optimizer
             if self.is_training:
                 # Global_step
-                self.global_step = tf.Variable(0, name='global_step', trainable=False)
-                    
+                self.global_step = tf.Variable(0, name='global_step', trainable=False)                  
                 per_example_loss = tf.nn.sigmoid_cross_entropy_with_logits(labels=self.label_ids,logits=logits)
-                
-                
-                print('per_example_loss:',per_example_loss)
                 self.loss = tf.reduce_mean(per_example_loss)              
-
-
                 # Optimizer BERT
                 train_examples = processor.get_train_examples(hp.data_dir)
                 num_train_steps = int(
