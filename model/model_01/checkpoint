@@ -1,0 +1,5 @@
+model_checkpoint_path: "F:\\github\\classifier_multi_label_textcnn\\model/model_01\\model_1_0.ckpt"
+all_model_checkpoint_paths: "F:\\github\\classifier_multi_label_textcnn\\model/model_01\\model_0_0.ckpt"
+all_model_checkpoint_paths: "F:\\github\\classifier_multi_label_textcnn\\model/model_01\\model_0_3.ckpt"
+all_model_checkpoint_paths: "F:\\github\\classifier_multi_label_textcnn\\model/model_01\\model_0_6.ckpt"
+all_model_checkpoint_paths: "F:\\github\\classifier_multi_label_textcnn\\model/model_01\\model_1_0.ckpt"
