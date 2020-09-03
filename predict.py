@@ -14,7 +14,8 @@ import numpy as np
 import tensorflow as tf
 from classifier_multi_label_textcnn.networks import NetworkAlbertTextCNN
 from classifier_multi_label_textcnn.classifier_utils import get_feature_test,id2label
-
+from classifier_multi_label_textcnn.hyperparameters import Hyperparamters as hp
+ 
           
 
 class ModelAlbertTextCNN(object,):
@@ -27,12 +28,11 @@ class ModelAlbertTextCNN(object,):
     def load_model():
         with tf.Graph().as_default():
             sess = tf.Session()
-            out_dir = os.path.join(pwd, "model")
             with sess.as_default():
                 albert =  NetworkAlbertTextCNN(is_training=False)
                 saver = tf.train.Saver()  
                 sess.run(tf.global_variables_initializer())
-                checkpoint_dir = os.path.abspath(os.path.join(out_dir,'small-google-gelu-V3.0'))
+                checkpoint_dir = os.path.abspath(os.path.join(pwd,hp.file_model))
                 print (checkpoint_dir)
                 ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
                 saver.restore(sess, ckpt.model_checkpoint_path)
