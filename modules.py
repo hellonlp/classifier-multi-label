@@ -12,7 +12,7 @@ from classifier_multi_label_textcnn.hyperparameters import Hyperparamters as hp
 
 
 def cell_textcnn(inputs,is_training):
-    # Add a dimension in the end：-1
+    # Add a dimension in final shape
     inputs_expand = tf.expand_dims(inputs, -1)
     # Create a convolution + maxpool layer for each filter size
     pooled_outputs = []
