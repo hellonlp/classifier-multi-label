@@ -145,23 +145,21 @@ class ClassifyProcessor(DataProcessor):
     def __init__(self):
         self.labels = set()
 
-    def get_train_examples(self, data_dir):
+     def get_train_examples(self, data_dir):
         """See base class."""
-        print('*'*30)
-        return self._create_examples(
-            #self._read_tsv(os.path.join(data_dir, "data_0_1_train.tsv")), "train")
-            self._read_csv(os.path.join(data_dir, "train_onehot.csv")), "train")
+        return self._create_examples(            
+            self._read_csv(os.path.join(data_dir, hp.train_data)), "train")
         
     def get_dev_examples(self, data_dir):
         """See base class."""
         return self._create_examples(
-            self._read_tsv(os.path.join(data_dir, "test_onehot.tsv")), "dev")
+            self._read_tsv(os.path.join(data_dir, hp.test_data)), "dev")
 
     def get_test_examples(self, data_dir):
         """See base class."""
         return self._create_examples(
-             self._read_tsv(os.path.join(data_dir, "test_onehot.tsv")), "test")
-
+             self._read_tsv(os.path.join(data_dir, hp.test_data)), "test")       
+        
     def get_labels(self):
         """See base class."""
         return list(hp.dict_id2label.keys())
