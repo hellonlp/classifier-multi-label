@@ -16,6 +16,7 @@ from classifier_multi_label_textcnn.utils import load_vocabulary
 
 class Hyperparamters:
     # Train parameters
+    num_train_epochs = 20
     print_step = 100
     batch_size = 64           
     summary_step = 10
@@ -24,6 +25,11 @@ class Hyperparamters:
     logdir = 'logdir/model_01'
     file_save_model = 'model/model_01'
 
+    # Train/Test data
+    data_dir = os.path.join(pwd,'data')
+    train_data = 'train_onehot.csv'
+    test_data = 'test_onehot.csv'  
+    
     # Predict model file
     file_model = 'model/saved_01'
         
@@ -32,7 +38,6 @@ class Hyperparamters:
     label_vocabulary = list(dict_id2label.values())
 
     # Optimization parameters
-    num_train_epochs = 20
     warmup_proportion = 0.1    
     use_tpu = None
     do_lower_case = True    
@@ -51,7 +56,6 @@ class Hyperparamters:
     # ALBERT
     model = 'albert_small_zh_google'
     bert_path = os.path.join(pwd,model)
-    data_dir = os.path.join(pwd,'data')
     vocab_file = os.path.join(pwd,model,'vocab_chinese.txt')
     init_checkpoint = os.path.join(pwd,model,'albert_model.ckpt')
     saved_model_path = os.path.join(pwd,'model')    
