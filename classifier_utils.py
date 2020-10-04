@@ -145,7 +145,7 @@ class ClassifyProcessor(DataProcessor):
     def __init__(self):
         self.labels = set()
 
-     def get_train_examples(self, data_dir):
+    def get_train_examples(self, data_dir):
         """See base class."""
         return self._create_examples(            
             self._read_csv(os.path.join(data_dir, hp.train_data)), "train")
