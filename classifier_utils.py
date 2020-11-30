@@ -31,8 +31,6 @@ def read_csv(input_file):
     jobcontent = df['content'].tolist()
     jlabel = df.loc[:,hp.label_vocabulary].values
     lines = [[jlabel[i],jobcontent[i]] for i in range(len(jlabel)) if type(jobcontent[i])==str]
-    random.shuffle(lines)
-    print('Read csv finished!(1)')
     return lines
 
 
@@ -132,9 +130,6 @@ class DataProcessor(object):
         jobcontent = df['content'].tolist()
         jlabel = df.loc[:,hp.label_vocabulary].values
         lines = [[jlabel[i],jobcontent[i]] for i in range(len(jlabel)) if type(jobcontent[i])==str]
-        random.shuffle(lines)
-        print('Read csv finished!(1)')
-        print('Head data:',lines[0:5])
         print('Length of data:',len(lines))
         return lines
 
