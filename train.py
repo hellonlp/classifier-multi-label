@@ -83,8 +83,8 @@ with sess.as_default():
                       MODEL.input_masks: input_mask_,
                       MODEL.segment_ids:segment_id_,
                       MODEL.label_ids:label_id_}
-                loss = sess.run(MODEL.loss, feed_dict = fd)
-                print('Time:%s, Epoch:%s, Batch number:%s/%s, Loss:%s'%(time_now_string(),str(i),str(j),str(num_batchs),str(loss)))   
+                accuracy,loss = sess.run([MODEL.accuracy,MODEL.loss], feed_dict = fd)
+                print('Time:%s, Epoch:%s, Batch number:%s/%s, Loss:%s, Accuracy:%s'%(time_now_string(),str(i),str(j),str(num_batchs),str(loss),str(accuracy)))   
     print('Train finished')
     
     
