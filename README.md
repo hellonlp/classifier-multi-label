@@ -8,7 +8,7 @@
  
  # 使用方法
  1、准备数据  
- 数据格式为：classifier_multi_label_textcnn/data/test_onehot.csv
+ 数据格式为：classifier_multi_label_textcnn/data/test_onehot.csv  
  2、参数设置  
  参考脚本 hyperparameters.py，直接修改里面的数值即可。  
  3、训练  
