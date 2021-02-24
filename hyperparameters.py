@@ -16,7 +16,7 @@ from classifier_multi_label_textcnn.utils import load_vocabulary
 
 class Hyperparamters:
     # Train parameters
-    num_train_epochs = 20
+    num_train_epochs = 5
     print_step = 100
     batch_size = 64           
     summary_step = 10
