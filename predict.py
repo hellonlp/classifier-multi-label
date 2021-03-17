@@ -55,12 +55,17 @@ def get_label(sentence):
     return [id2label(l) for l in np.where(prediction==1)[0] if l!=0]      
 
 
-
+=
 if __name__ == '__main__':
     # Test
-    sent3 = '11'
-    print(get_label(sent3))
-
+    sentences = ['耗电情况：整体来说耗电不是特别严重',
+     '取暖效果：取暖效果好',
+     '取暖效果：开到二挡很暖和',
+     '一个小时房间仍然没暖和',
+     '开着坐旁边才能暖和',
+     '外观设计：好看']
+    for sentence in sentences:
+         print(sentence,get_label(sentence))
     
 
 
