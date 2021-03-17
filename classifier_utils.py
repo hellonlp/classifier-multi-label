@@ -754,9 +754,8 @@ def get_feature_test(sentence):
 
 
 if __name__ == '__main__':
-    #print(features)
-    ### 获取参数:test
-    sentence = '天天向上'
+    ## Test:获取参数
+    sentence = '好好学习，天天向上。'
     feature = get_feature_test(sentence)
     
     
