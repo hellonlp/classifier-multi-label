@@ -16,7 +16,7 @@ from classifier_multi_label_textcnn.utils import load_vocabulary
 
 class Hyperparamters:
     # Train parameters
-    num_train_epochs = 50
+    num_train_epochs = 50  # 由于训练集较少，所以模型拟合需要更多是epoch。
     print_step = 100
     batch_size = 64           
     summary_step = 10
