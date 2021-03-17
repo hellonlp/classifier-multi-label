@@ -24,7 +24,7 @@ class Hyperparamters:
     max_to_keep = 100
     logdir = 'logdir/model_01'
     file_save_model = 'model/model_01'
-    file_load_model = 'model/saved_01'
+    file_load_model = 'model/load_01'
 
     # Train/Test data
     data_dir = os.path.join(pwd,'data')
