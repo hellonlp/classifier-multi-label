@@ -24,15 +24,12 @@ class Hyperparamters:
     max_to_keep = 100
     logdir = 'logdir/model_01'
     file_save_model = 'model/model_01'
-    file_load_model = ''
+    file_load_model = 'model/saved_01'
 
     # Train/Test data
     data_dir = os.path.join(pwd,'data')
     train_data = 'train_onehot.csv'
     test_data = 'test_onehot.csv'  
-    
-    # Predict model file
-    file_model = 'model/saved_01'
         
     # Load vocabulcary dict
     dict_id2label,dict_label2id = load_vocabulary(os.path.join(pwd,'data','vocabulary_label.txt') )
