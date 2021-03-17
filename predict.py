@@ -62,8 +62,7 @@ if __name__ == '__main__':
      '取暖效果：取暖效果好',
      '取暖效果：开到二挡很暖和',
      '一个小时房间仍然没暖和',
-     '开着坐旁边才能暖和',
-     '外观设计：好看']
+     '开着坐旁边才能暖和']
     for sentence in sentences:
          print(sentence,get_label(sentence))
     
