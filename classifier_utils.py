@@ -757,7 +757,7 @@ if __name__ == '__main__':
     ## Test:获取参数
     sentence = '好好学习，天天向上。'
     feature = get_feature_test(sentence)
-    
+    print(feature)
     
     
     
