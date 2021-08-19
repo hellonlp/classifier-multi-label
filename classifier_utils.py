@@ -24,7 +24,6 @@ def id2label(index):
     return hp.dict_id2label[str(index)]
 
 
-
 def read_csv(input_file):
     """Reads a tab separated value file."""
     df = load_csv(input_file,header=0).fillna('|')
@@ -114,16 +113,6 @@ class DataProcessor(object):
     raise NotImplementedError()
 
   @classmethod
-  def _read_tsv(cls, input_file, quotechar=None):
-    """Reads a tab separated value file."""
-    with tf.gfile.Open(input_file, "r") as f:
-      reader = csv.reader(f, delimiter="\t", quotechar=quotechar)
-      lines = []
-      for line in reader:
-        lines.append(line)
-      return lines
-
-  @classmethod
   def _read_csv(cls,input_file):
         """Reads a tab separated value file."""
         df = load_csv(input_file,header=0).fillna('|')
@@ -148,12 +137,12 @@ class ClassifyProcessor(DataProcessor):
     def get_dev_examples(self, data_dir):
         """See base class."""
         return self._create_examples(
-            self._read_tsv(os.path.join(data_dir, hp.test_data)), "dev")
+            self._read_csv(os.path.join(data_dir, hp.test_data)), "dev")
 
     def get_test_examples(self, data_dir):
         """See base class."""
         return self._create_examples(
-             self._read_tsv(os.path.join(data_dir, hp.test_data)), "test")       
+             self._read_csv(os.path.join(data_dir, hp.test_data)), "test")       
         
     def get_labels(self):
         """See base class."""
