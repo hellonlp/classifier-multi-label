@@ -120,13 +120,13 @@ class DataProcessor(object):
 
   @classmethod
   def _read_csv(cls,input_file):
-        """Reads a tab separated value file."""
-        df = load_csv(input_file,header=0).fillna('|')
-        jobcontent = df['content'].tolist()
-        jlabel = df.loc[:,hp.label_vocabulary].values
-        lines = [[jlabel[i],jobcontent[i]] for i in range(len(jlabel)) if type(jobcontent[i])==str]
-        print('Length of data:',len(lines))
-        return lines
+    """Reads a tab separated value file."""
+    df = load_csv(input_file,header=0).fillna('|')
+    jobcontent = df['content'].tolist()
+    jlabel = df.loc[:,hp.label_vocabulary].values
+    lines = [[jlabel[i],jobcontent[i]] for i in range(len(jlabel)) if type(jobcontent[i])==str]
+    print('Length of data:',len(lines))
+    return lines
 
 
 class ClassifyProcessor(DataProcessor):
