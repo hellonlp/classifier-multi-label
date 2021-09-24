@@ -82,7 +82,7 @@ def load_vocabulary(file_vocabulary_label):
 
 def shuffle_two(a1,a2):
     """
-    随机打乱a1和a2两个
+    Shuffle two list
     """
     ran = np.arange(len(a1))
     np.random.shuffle(ran)
