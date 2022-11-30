@@ -1,7 +1,7 @@
 # 简介
 1、本项目是在tensorflow版本1.15.0的基础上做的训练和测试。  
 2、本项目为中文的多标签文本分类。  
-3、欢迎大家联系我 www.hellonlp.com  
+3、欢迎大家联系 www.hellonlp.com  
 4、albert_small_zh_google对应的百度云下载地址：  
    链接：https://pan.baidu.com/s/1RKzGJTazlZ7y12YRbAWvyA  
    提取码：wuxw  
