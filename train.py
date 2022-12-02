@@ -5,6 +5,8 @@ Created on Thu May 30 21:42:07 2019
 @author: cm
 """
 
+
+
 import os
 #os.environ["CUDA_VISIBLE_DEVICES"] = '-1'
 import numpy as np
@@ -15,11 +17,8 @@ from classifier_multi_label_textcnn.hyperparameters import Hyperparamters as hp
 from classifier_multi_label_textcnn.utils import select,time_now_string
 
 
-
 pwd = os.path.dirname(os.path.abspath(__file__))
 MODEL = NetworkAlbertTextCNN(is_training=True)
-
-
 
 
 # Get data features
@@ -27,7 +26,6 @@ input_ids,input_masks,segment_ids,label_ids = get_features()
 num_train_samples = len(input_ids)
 indexs = np.arange(num_train_samples)               
 num_batchs = int((num_train_samples - 1) /hp.batch_size) + 1
-print('Number of batch:',num_batchs)
 
 # Set up the graph 
 saver = tf.train.Saver(max_to_keep=hp.max_to_keep)

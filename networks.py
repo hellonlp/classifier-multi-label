@@ -5,6 +5,7 @@ Created on Thu May 30 20:44:42 2019
 @author: cm
 """
 
+
 import os
 import tensorflow as tf
 from classifier_multi_label_textcnn import modeling
@@ -19,7 +20,6 @@ num_labels = hp.num_labels
 processor = ClassifyProcessor() 
 bert_config_file = os.path.join(hp.bert_path,'albert_config.json')
 bert_config = modeling.AlbertConfig.from_json_file(bert_config_file)
-
 
 
 class NetworkAlbertTextCNN(object):

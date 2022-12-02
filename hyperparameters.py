@@ -6,7 +6,6 @@ Created on Mon Nov 12 14:23:12 2018
 """
 
 
-
 import os
 import sys
 pwd = os.path.dirname(os.path.abspath(__file__))
@@ -57,15 +56,4 @@ class Hyperparamters:
     vocab_file = os.path.join(pwd,model,'vocab_chinese.txt')
     init_checkpoint = os.path.join(pwd,model,'albert_model.ckpt')
     saved_model_path = os.path.join(pwd,'model')    
-    
-   
-    
-    
-    
-    
-    
-    
-
-
-    
-    
+        

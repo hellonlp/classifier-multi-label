@@ -11,8 +11,6 @@ import numpy as np
 import pandas as pd
 
 
-
-
 def cut_list(data,size):
     """
     data: a list

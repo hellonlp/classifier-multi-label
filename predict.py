@@ -17,7 +17,6 @@ from classifier_multi_label_textcnn.classifier_utils import get_feature_test,id2
 from classifier_multi_label_textcnn.hyperparameters import Hyperparamters as hp
  
           
-
 class ModelAlbertTextCNN(object,):
     """
     Load NetworkAlbert TextCNN model
@@ -58,11 +57,8 @@ def get_label(sentence):
 
 if __name__ == '__main__':
     # Test
-    sentences = ['耗电情况：整体来说耗电不是特别严重',
-     '取暖效果：取暖效果好',
-     '取暖效果：开到二挡很暖和',
-     '一个小时房间仍然没暖和',
-     '开着坐旁边才能暖和']
+    sentences = ['耗电不是特别严重',
+                 '取暖效果：取暖效果好']
     for sentence in sentences:
          print(sentence,get_label(sentence))
     

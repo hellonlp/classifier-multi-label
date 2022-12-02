@@ -39,7 +39,6 @@ def read_csv(input_file):
     return lines
 
 
-
 class InputExample(object):
   """A single training/test example for simple sequence classification."""
 
@@ -732,6 +731,7 @@ def create_example(line,set_type):
     example = InputExample(guid=guid, text_a=text_a, text_b=None, label=label)
     return example
 
+
 def get_feature_test(sentence):
     example = create_example(['0',sentence],'test')
     feature = convert_single_example(0, example, label_list,max_seq_length, tokenizer,task_name='classify')                                    
@@ -743,11 +743,4 @@ if __name__ == '__main__':
     sentence = '好好学习，天天向上。'
     feature = get_feature_test(sentence)
     print(feature)
-    
-    
-    
-    
-
-    
-
     
