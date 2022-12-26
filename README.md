@@ -12,7 +12,7 @@
 - 链接：https://zhuanlan.zhihu.com/p/158622992
 
 ## classifier_multi_label_denses
-![avatar](imgs/denses.jpeg)
+![avatar](imgs/denses.jpg)
 - 使用BERT第一个token[CLS]的向量，维度为(batch_size,hidden_size)，然后通过多个二分类(全连接层)来解决多标签分类问题。
 - 链接：https://zhuanlan.zhihu.com/p/263573628
 
