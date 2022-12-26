@@ -1,4 +1,4 @@
-## Classifier Multi Label
+## 多标签文本分类
 - classifier_multi_label
 - classifier_multi_label_textcnn
 - classifier_multi_label_denses
