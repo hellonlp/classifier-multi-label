@@ -24,23 +24,16 @@
 ```
 
 ### 1. classifier_multi_label
-- 使用BERT第一个token[CLS]的向量，维度为(batch_size,hidden_size)。
-- 链接：https://zhuanlan.zhihu.com/p/164873441
-
+- 使用BERT第一个token[CLS]的向量，维度为(batch_size,hidden_size)。  
 
 ### 2. classifier_multi_label_textcnn
-- 使用BERT输出的三维向量，维度为(batch_size,sequence_length,hidden_size)，然后做为输入进入TextCNN层。
-- 链接：https://zhuanlan.zhihu.com/p/158622992
-
+- 使用BERT输出的三维向量，维度为(batch_size,sequence_length,hidden_size)，然后做为输入进入TextCNN层。  
 
 ### 3. classifier_multi_label_denses
-- 使用BERT第一个token[CLS]的向量，维度为(batch_size,hidden_size)，然后通过多个二分类(全连接层)来解决多标签分类问题。
-- 链接：https://zhuanlan.zhihu.com/p/263573628
-
+- 使用BERT第一个token[CLS]的向量，维度为(batch_size,hidden_size)，然后通过多个二分类(全连接层)来解决多标签分类问题。  
 
 ### 4. classifier_multi_label_seq2seq
-- 使用BERT输出的三维向量，维度为(batch_size,sequence_length,hidden_size)，然后做为输入进入seq2seq+attention层。
-- 链接：https://zhuanlan.zhihu.com/p/260743336   <br />
+- 使用BERT输出的三维向量，维度为(batch_size,sequence_length,hidden_size)，然后做为输入进入seq2seq+attention层。  
 
 
 ## 三、实验
@@ -53,7 +46,7 @@
 
 ### 3. 实验结论
 如果对推理速度的要求不是非常高，基于ALBERT+Seq2Seq_Attention框架的多标签文本分类效果最好。   
-如果对推理速度和模型效果要求都非常高，基于ALBERT+TextCNN会是一个不错的选择。   <br />             
+如果对推理速度和模型效果要求都非常高，基于ALBERT+TextCNN会是一个不错的选择。  
 
 
 ## 参考
