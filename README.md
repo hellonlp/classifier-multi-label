@@ -1,4 +1,4 @@
-# 多标签文本分类
+# Text Classification Multi-Label
 [![Python](https://img.shields.io/badge/python-3.7.6-blue?logo=python&logoColor=FED643)](https://www.python.org/downloads/release/python-376/)
 [![Pytorch](https://img.shields.io/badge/tensorflow-1.15.0-red?logo=pytorch)](https://tensorflow.org/get-started/previous-versions/)
 * 多元分类任务中一条数据只有一个标签，但这个标签可能有多种类别。比如判定某个人的性别，只能归类为"男性"、"女性"其中一个。再比如判断一个文本的情感只能归类为"正面"、"中面"或者"负面"其中一个。
