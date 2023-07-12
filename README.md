@@ -29,6 +29,8 @@
 - 使用了tf.where函数来选择概率小于0.5的对应id。  
 
 ### 2. classifier_multi_label_textcnn
+<img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/textcnn.png" width="700" height="200">  
+
 - 使用BERT输出的三维向量，维度为(batch_size,sequence_length,hidden_size)，然后做为输入进入TextCNN层。
 - 使用了tf.nn.sigmoid_cross_entropy_with_logits的损失函数。
 - 使用了tf.where函数来选择概率小于0.5的对应id。   
