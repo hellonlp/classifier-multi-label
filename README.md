@@ -52,9 +52,7 @@
 
 
 ### 3. 实验结论
-* 如果对推理速度的要求不是非常高，基于ALBERT+Seq2Seq_Attention框架的多标签文本分类效果最好。 
-* 如果对推理速度和模型效果要求都非常高，基于ALBERT+TextCNN会是一个不错的选择。  
-
-
-- 链接：https://zhuanlan.zhihu.com/p/152140983  
+如果对推理速度的要求不是非常高，基于ALBERT+Seq2Seq_Attention框架的多标签文本分类效果最好。   
+如果对推理速度和模型效果要求都非常高，基于ALBERT+TextCNN会是一个不错的选择。   
+链接：https://zhuanlan.zhihu.com/p/152140983    
 
