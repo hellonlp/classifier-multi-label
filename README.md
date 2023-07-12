@@ -41,6 +41,8 @@
 - 使用了tf.argmax函数来选择输出最高概率。  
 
 ### 4. classifier_multi_label_seq2seq
+<img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/seq2seq.png" width="700" height="200">  
+
 - 使用BERT输出的三维向量，维度为(batch_size,sequence_length,hidden_size)，然后做为输入进入seq2seq+attention层。  
 - 使用了tf.nn.softmax_cross_entropy_with_logits的损失函数。
 - 使用了beam search 来解码输出概率。  
