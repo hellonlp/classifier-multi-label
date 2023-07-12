@@ -24,6 +24,8 @@
 ```
 
 ### 1. classifier_multi_label
+<img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/base.png" width="700" height="200">  
+
 - 使用BERT第一个token[CLS]的向量，维度为(batch_size,hidden_size)。  
 - 使用了tf.nn.sigmoid_cross_entropy_with_logits的损失函数。
 - 使用了tf.where函数来选择概率小于0.5的对应id。  
