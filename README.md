@@ -23,7 +23,7 @@
     └── classifier_multi_label_seq2seq
 ```
 
-### classifier_multi_label
+**classifier_multi_label**
 - 使用BERT第一个token[CLS]的向量，维度为(batch_size,hidden_size)。
 - 链接：https://zhuanlan.zhihu.com/p/164873441
 
