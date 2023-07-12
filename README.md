@@ -57,11 +57,11 @@
 
 
 ## 参考
-[多标签文本分类介绍，以及对比训练](https://zhuanlan.zhihu.com/p/152140983)
-[多标签文本分类 [ALBERT+TextCNN]](https://zhuanlan.zhihu.com/p/158622992)
-[多标签文本分类 [ALBERT]](https://zhuanlan.zhihu.com/p/164873441)
-[多标签文本分类 [ALBERT+Seq2Seq+Attention]](https://zhuanlan.zhihu.com/p/260743336)
-[多标签文本分类 [ALBERT+Multi_Denses]](https://zhuanlan.zhihu.com/p/263573628)
+[多标签文本分类介绍，以及对比训练](https://zhuanlan.zhihu.com/p/152140983)  
+[多标签文本分类 [ALBERT+TextCNN]](https://zhuanlan.zhihu.com/p/158622992)  
+[多标签文本分类 [ALBERT]](https://zhuanlan.zhihu.com/p/164873441)  
+[多标签文本分类 [ALBERT+Seq2Seq+Attention]](https://zhuanlan.zhihu.com/p/260743336)  
+[多标签文本分类 [ALBERT+Multi_Denses]](https://zhuanlan.zhihu.com/p/263573628)  
 
 
 
