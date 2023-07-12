@@ -36,6 +36,7 @@
 - 使用了tf.where函数来选择概率小于0.5的对应id。   
 
 ### 3. classifier_multi_label_denses
+<img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/denses01.png" width="700" height="200">  
 <img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/denses02.png" width="700" height="200">  
 
 - 使用BERT第一个token[CLS]的向量，维度为(batch_size,hidden_size)，然后通过多个二分类(全连接层)来解决多标签分类问题。
