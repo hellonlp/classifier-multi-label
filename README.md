@@ -58,7 +58,7 @@
 <img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/10.png" width="700" height="300">
 
 ### 2. 实验结果
-<img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/09b.jpg" width="700" height="180">
+<img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/09b.jpg" width="700" height="160">
 
 
 ### 3. 实验结论
