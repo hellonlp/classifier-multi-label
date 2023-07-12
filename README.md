@@ -1,6 +1,6 @@
 # Text Classification Multi-Label
 [![Python](https://img.shields.io/badge/python-3.7.6-blue?logo=python&logoColor=FED643)](https://www.python.org/downloads/release/python-376/)
-[![Pytorch](https://img.shields.io/badge/tensorflow-1.15.0-red?logo=tensorflow)](https://www.tensorflow.org/versions/)  
+[![Pytorch](https://img.shields.io/badge/tensorflow-1.15.0-red?logo=tensorflow)](https://www.tensorflow.org/versions/)     
 
 
 
@@ -40,7 +40,7 @@
 
 ### 4. classifier_multi_label_seq2seq
 - 使用BERT输出的三维向量，维度为(batch_size,sequence_length,hidden_size)，然后做为输入进入seq2seq+attention层。
-- 链接：https://zhuanlan.zhihu.com/p/260743336
+- 链接：https://zhuanlan.zhihu.com/p/260743336   
 
 
 ## 三、实验
@@ -53,15 +53,16 @@
 
 ### 3. 实验结论
 如果对推理速度的要求不是非常高，基于ALBERT+Seq2Seq_Attention框架的多标签文本分类效果最好。   
-如果对推理速度和模型效果要求都非常高，基于ALBERT+TextCNN会是一个不错的选择。               
+如果对推理速度和模型效果要求都非常高，基于ALBERT+TextCNN会是一个不错的选择。                
 
 
 ## 参考
 [多标签文本分类介绍，以及对比训练](https://zhuanlan.zhihu.com/p/152140983)  
-[多标签文本分类 [ALBERT+TextCNN]](https://zhuanlan.zhihu.com/p/158622992)  
 [多标签文本分类 [ALBERT]](https://zhuanlan.zhihu.com/p/164873441)  
-[多标签文本分类 [ALBERT+Seq2Seq+Attention]](https://zhuanlan.zhihu.com/p/260743336)  
+[多标签文本分类 [ALBERT+TextCNN]](https://zhuanlan.zhihu.com/p/158622992)  
 [多标签文本分类 [ALBERT+Multi_Denses]](https://zhuanlan.zhihu.com/p/263573628)  
+[多标签文本分类 [ALBERT+Seq2Seq+Attention]](https://zhuanlan.zhihu.com/p/260743336)      
+
 
 
 
