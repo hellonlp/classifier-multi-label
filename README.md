@@ -1,4 +1,4 @@
-# Text Classification Multi-Label
+# Text Classification Multi-Label: 多标签文本分类
 [![Python](https://img.shields.io/badge/python-3.7.6-blue?logo=python&logoColor=FED643)](https://www.python.org/downloads/release/python-376/)
 [![Pytorch](https://img.shields.io/badge/tensorflow-1.15.0-red?logo=tensorflow)](https://www.tensorflow.org/versions/)     
 
