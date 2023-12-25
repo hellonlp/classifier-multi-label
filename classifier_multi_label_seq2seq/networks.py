@@ -65,7 +65,7 @@ class NetworkAlbertSeq2Seq(object):
                                                                                            self.encode_state,
                                                                                            _is_training=is_training)
 
-            # Initial embedding by BERT
+        # Initial embedding by BERT
         ckpt = tf.train.get_checkpoint_state(hp.saved_model_path)
         checkpoint_suffix = ".index"
         if ckpt and tf.gfile.Exists(ckpt.model_checkpoint_path + checkpoint_suffix):
@@ -80,7 +80,7 @@ class NetworkAlbertSeq2Seq(object):
                                                                 hp.init_checkpoint)
                 tf.train.init_from_checkpoint(hp.init_checkpoint, assignment_map)
 
-                # Loss and Optimizer
+        # Loss and Optimizer
         if self.is_training:
             with tf.name_scope("loss"):
                 # Global step
@@ -104,7 +104,7 @@ class NetworkAlbertSeq2Seq(object):
                 tf.summary.scalar('loss', self.loss)
                 self.merged = tf.summary.merge_all()
 
-                # Optimizer BERT
+            # Optimizer BERT
             num_train_examples = len(processor.get_train_examples(hp.data_dir))
             num_train_steps = int(
                 num_train_examples / hp.batch_size * hp.num_train_epochs)
