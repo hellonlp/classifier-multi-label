@@ -20,11 +20,10 @@ class Hyperparamters:
     num_saved_per_epoch = 3
     max_to_keep = 100
     logdir = 'logdir/model_01'
-    
 
     # Model file
-    file_save_model = 'model/model_01'
-    file_model = 'model/saved_01'
+    file_load_model = 'model/model_save'
+    file_save_model = 'model/model_load'
     
     # Train/Test data 
     data_dir = os.path.join(pwd,'data')
