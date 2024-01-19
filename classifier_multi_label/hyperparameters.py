@@ -20,9 +20,10 @@ class Hyperparamters:
     num_saved_per_epoch = 3
     max_to_keep = 100
     logdir = 'logdir/model_01'
-    file_save_model = 'model/model_01'
+    
 
-    # Predict model file
+    # Model file
+    file_save_model = 'model/model_01'
     file_model = 'model/saved_01'
     
     # Train/Test data 
