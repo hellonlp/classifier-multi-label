@@ -23,8 +23,11 @@ class Hyperparamters:
     num_saved_per_epoch = 3
     max_to_keep = 100
     logdir = 'logdir/CML_Denses'
-    file_save_model = 'model/CML_Denses'
-    inference_model = 'CML_Denses'
+
+    # Model paths
+    file_model_save = 'model/model_save'
+    file_model_load = 'model/model_load'
+    #inference_model = 'CML_Denses'
     
     # Train/Test data
     data_dir = os.path.join(pwd,'data')
