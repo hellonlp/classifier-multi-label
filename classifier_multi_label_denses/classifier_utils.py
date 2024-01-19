@@ -1,4 +1,11 @@
-# coding=utf-8
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Nov 12 14:23:12 2020
+
+@author: cm
+"""
+
+
 
 import os
 import csv
@@ -9,12 +16,12 @@ import tensorflow.compat.v1 as tf
 from tensorflow.contrib import tpu as contrib_tpu
 from tensorflow.contrib import data as contrib_data
 from tensorflow.contrib import metrics as contrib_metrics
+
 from classifier_multi_label_denses import modeling
 from classifier_multi_label_denses import optimization
 from classifier_multi_label_denses import tokenization
 from classifier_multi_label_denses.hyperparameters import Hyperparamters as hp
 from classifier_multi_label_denses.utils import load_csv
-
 
 
 
@@ -24,7 +31,6 @@ def label2id(label):
 
 def id2label(index):
     return hp.dict_id2label[str(index)]
-
 
 
 def read_csv(input_file):
