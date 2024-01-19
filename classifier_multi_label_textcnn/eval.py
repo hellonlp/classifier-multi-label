@@ -13,4 +13,5 @@ from classifier_multi_label_textcnn.utils import cut_list
 
 
 if __name__ == '__main__':
-    ## 参考 [https://github.com/hellonlp/classifier-multi-label/blob/master/evaluation/eval_multi_label.py]/(xx)
+    print("参考下面的方法")
+    ## 参考 https://github.com/hellonlp/classifier-multi-label/blob/master/evaluation/eval_multi_label.py
