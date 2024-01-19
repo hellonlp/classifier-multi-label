@@ -35,7 +35,7 @@ sess = tf.Session()
 sess.run(tf.global_variables_initializer())
 
 # Load model saved before
-MODEL_SAVE_PATH = os.path.join(pwd, hp.file_save_model)
+MODEL_SAVE_PATH = os.path.join(pwd, hp.file_model_save)
 ckpt = tf.train.get_checkpoint_state(MODEL_SAVE_PATH)
 if ckpt and ckpt.model_checkpoint_path:
      saver.restore(sess, ckpt.model_checkpoint_path)
@@ -73,9 +73,9 @@ with sess.as_default():
                 
             # Save Model
             if j%(num_batchs//hp.num_saved_per_epoch)==0:
-                if not os.path.exists(os.path.join(pwd, hp.file_save_model)):
-                    os.makedirs(os.path.join(pwd, hp.file_save_model))                 
-                saver.save(sess, os.path.join(pwd, hp.file_save_model, 'model'+'_%s_%s.ckpt'%(str(i),str(j))))            
+                if not os.path.exists(os.path.join(pwd, hp.file_model_save)):
+                    os.makedirs(os.path.join(pwd, hp.file_model_save))                 
+                saver.save(sess, os.path.join(pwd, hp.file_model_save, 'model'+'_%s_%s.ckpt'%(str(i),str(j))))            
             
             # Log
             if j % hp.print_step == 0:
@@ -88,13 +88,3 @@ with sess.as_default():
     print('Train finished')
     
     
-    
-    
-    
-    
-    
-    
-
-
-
-
