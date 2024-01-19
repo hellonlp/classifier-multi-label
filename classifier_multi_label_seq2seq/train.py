@@ -6,18 +6,22 @@ Created on Fri Jul 10 19:25:55 2020
 """
 
 
+
 import os
 # os.environ["CUDA_VISIBLE_DEVICES"] = '-1'
 import numpy as np
 import tensorflow as tf
+
 from classifier_multi_label_seq2seq.networks import NetworkAlbertSeq2Seq
 from classifier_multi_label_seq2seq.classifier_utils import get_features
 from classifier_multi_label_seq2seq.hyperparameters import Hyperparamters as hp
 from classifier_multi_label_seq2seq.utils import select, shuffle_one, time_now_string
 from classifier_multi_label_seq2seq.load import normalization_label
 
+
 pwd = os.path.dirname(os.path.abspath(__file__))
 MODEL = NetworkAlbertSeq2Seq(is_training=True)
+
 
 # Get data features
 input_ids, input_masks, segment_ids, label_ids = get_features()
@@ -66,13 +70,13 @@ with sess.as_default():
                 summary, glolal_step = sess.run([MODEL.merged, MODEL.global_step], feed_dict=fd)
                 writer.add_summary(summary, glolal_step)
 
-                # Save Model
+            # Save Model
             if j % (num_batchs // hp.num_saved_per_epoch) == 0:
                 if not os.path.exists(os.path.join(pwd, hp.file_model_save)):
                     os.makedirs(os.path.join(pwd, hp.file_model_save))
                 saver.save(sess, os.path.join(pwd, hp.file_model_save, 'model' + '_%s_%s.ckpt' % (str(i), str(j))))
 
-                # Log
+            # Log
             if j % hp.print_step == 0:
                 fd = {MODEL.input_ids: input_id_,
                       MODEL.input_masks: input_mask_,
