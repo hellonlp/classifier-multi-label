@@ -13,5 +13,4 @@ from classifier_multi_label_textcnn.utils import cut_list
 
 
 if __name__ == '__main__':
-    ## 加载数据
-    print('待添加！')
+    ## 参考 [https://github.com/hellonlp/classifier-multi-label/blob/master/evaluation/eval_multi_label.py]/(xx)
