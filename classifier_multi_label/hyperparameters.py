@@ -22,8 +22,8 @@ class Hyperparamters:
     logdir = 'logdir/model_01'
 
     # Model file
-    file_load_model = 'model/model_load'
-    file_save_model = 'model/model_save'
+    file_model_load = 'model/model_load'
+    file_model_save = 'model/model_save'
     
     # Train/Test data 
     data_dir = os.path.join(pwd,'data')
