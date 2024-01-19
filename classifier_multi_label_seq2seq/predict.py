@@ -33,7 +33,7 @@ class ModelAlbertSeq2seq(object, ):
                 albert = NetworkAlbertSeq2Seq(is_training=False)
                 saver = tf.train.Saver()
                 sess.run(tf.global_variables_initializer())
-                checkpoint_dir = os.path.abspath(os.path.join(pwd, hp.file_load_model))
+                checkpoint_dir = os.path.abspath(os.path.join(pwd, hp.file_model_load))
                 ckpt = tf.train.get_checkpoint_state(checkpoint_dir)
                 saver.restore(sess, ckpt.model_checkpoint_path)
         return albert, sess
