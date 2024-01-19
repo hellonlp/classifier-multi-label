@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri May 25 23:43:39 2018
+Created on Fri May 25 23:43:39 2021
 
 @author: cm
 """
@@ -11,7 +11,6 @@ import numpy as np
 import pandas as pd
 
 
-   
 def time_now_string():
     return time.strftime("%Y-%m-%d %H:%M:%S",time.localtime( time.time() )) 
 
