@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Thu May 30 17:12:37 2019
+Created on Thu May 30 17:12:37 2021
 
 @author: cm
 """
@@ -12,8 +12,10 @@ pwd = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import numpy as np
 import tensorflow as tf
+
 from classifier_multi_label_textcnn.networks import NetworkAlbertTextCNN
-from classifier_multi_label_textcnn.classifier_utils import get_feature_test,id2label
+from classifier_multi_label_textcnn.classifier_utils import id2label
+from classifier_multi_label_textcnn.classifier_utils import get_feature_test
 from classifier_multi_label_textcnn.hyperparameters import Hyperparamters as hp
  
           
@@ -63,9 +65,3 @@ if __name__ == '__main__':
          print(sentence,get_label(sentence))
     
 
-
-
-    
-    
-    
-    
