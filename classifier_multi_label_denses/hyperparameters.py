@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-Created on Mon Nov 12 14:23:12 2018
+Created on Mon Nov 12 14:23:12 2020
 
 @author: cm
 """
-
 
 
 import os
@@ -27,13 +26,11 @@ class Hyperparamters:
     # Model paths
     file_model_save = 'model/model_save'
     file_model_load = 'model/model_load'
-    #inference_model = 'CML_Denses'
     
     # Train/Test data
     data_dir = os.path.join(pwd,'data')
     train_data = 'train_onehot.csv'
     test_data = 'test_onehot.csv'    
-    
     
     # Load vocabulcary dict
     dict_id2label,dict_label2id = load_vocabulary(os.path.join(pwd,'data','vocabulary_label.txt') )
