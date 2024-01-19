@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri May 25 23:43:39 2018
-
+Created on Fri May 25 23:43:39 2021
 @author: cm
 """
 
@@ -95,7 +94,3 @@ def load_vocabulary(file_vocabulary_label):
 
 if __name__ == '__main__': 
     print('')
-
-
-
-
