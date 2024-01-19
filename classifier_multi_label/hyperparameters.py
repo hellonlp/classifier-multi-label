@@ -8,7 +8,7 @@ Created on Mon Nov 12 14:23:12 2018
 
 import os
 pwd = os.path.dirname(os.path.abspath(__file__))
-from classifier_multi_label.utils import load_vocabulary#,load_third_fourth_dict
+from classifier_multi_label.utils import load_vocabulary
 
 
 class Hyperparamters:
