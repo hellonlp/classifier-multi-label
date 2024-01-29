@@ -25,6 +25,6 @@ python predict.py
 
  
 
-# 知乎代码解读
+# 知乎解读
 https://zhuanlan.zhihu.com/p/164873441
 
