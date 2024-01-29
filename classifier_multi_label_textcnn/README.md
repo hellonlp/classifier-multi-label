@@ -19,7 +19,9 @@
  ```
  python predict.py
  ```
-注意：推理时需要把model/save中的模型复制到model/load中，并修改model/load中的checkpoint为当前模型名称。
+注意：推理时需要把model/save中的模型复制到model/load中，并修改model/load中的checkpoint文件的内容为当前模型名称，例如：model_checkpoint_path: "model_xx_xx.ckpt"。
+。
+
 
  
  # 知乎代码解读
