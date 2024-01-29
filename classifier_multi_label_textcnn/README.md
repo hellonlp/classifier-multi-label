@@ -12,9 +12,15 @@
  2、参数设置  
  参考脚本 hyperparameters.py，直接修改里面的数值即可。  
  3、训练  
- python train.py  
- 4、预测  
- python predict.py  
+ ```
+ python train.py
+ ```
+ 4、预测
+ ```
+ python predict.py
+ ```
+注意：推理时需要把model/save中的模型复制到model/load中，并修改model/load中的checkpoint为当前模型名称。
+
  
  # 知乎代码解读
 https://zhuanlan.zhihu.com/p/158622992
