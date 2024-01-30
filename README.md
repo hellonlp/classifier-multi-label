@@ -2,20 +2,23 @@
 [![Python](https://img.shields.io/badge/python-3.7.6-blue?logo=python&logoColor=FED643)](https://www.python.org/downloads/release/python-376/)
 [![Pytorch](https://img.shields.io/badge/tensorflow-1.15.0-red?logo=tensorflow)](https://www.tensorflow.org/versions/)     
 
-<br/>
 
-<img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/02.png" width="800">
-
-<br/>
 
 ## 一、简介
 ### 1. 多元分类
    多分类任务中一条数据只有一个标签，但这个标签可能有多种类别。比如判定某个人的性别，只能归类为"男性"、"女性"其中一个。再比如判断一个文本的情感只能归类为"正面"、"中面"或者"负面"其中一个。
 ### 2. 多标签分类
    多标签分类任务中一条数据可能有多个标签，每个标签可能有两个或者多个类别。例如，一篇新闻可能同时归类为"娱乐"和"运动"，也可能只属于"娱乐"或者其它类别。    
-<img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/01b.png" width="700">
 
 <br/>
+
+<img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/01b.png" width="800">
+<br/>
+
+<img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/02.png" width="800">
+
+<br/>
+
 
 ## 二、算法
 
