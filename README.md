@@ -53,6 +53,7 @@
 - 使用了tf.nn.softmax_cross_entropy_with_logits的损失函数。
 - 使用了beam search 来解码输出概率。  
   
+<br/>
 
 ## 三、实验
 ### 1. 训练过程
@@ -66,6 +67,7 @@
 - 如果对推理速度的要求不是非常高，基于ALBERT+Seq2Seq_Attention框架的多标签文本分类效果最好。   
 - 如果对推理速度和模型效果要求都非常高，基于ALBERT+TextCNN会是一个不错的选择。  
 
+<br/>
 
 ## 参考
 [多标签文本分类介绍，以及对比训练](https://zhuanlan.zhihu.com/p/152140983)  
