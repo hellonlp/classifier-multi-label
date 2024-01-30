@@ -2,7 +2,7 @@
 [![Python](https://img.shields.io/badge/python-3.7.6-blue?logo=python&logoColor=FED643)](https://www.python.org/downloads/release/python-376/)
 [![Pytorch](https://img.shields.io/badge/tensorflow-1.15.0-red?logo=tensorflow)](https://www.tensorflow.org/versions/)     
 
-<img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/HELLONLP_USE03.png" width="800">
+<img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/02" width="800">
 
 ## 一、简介
 ### 1. 多元分类
