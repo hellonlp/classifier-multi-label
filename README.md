@@ -11,7 +11,7 @@
    多标签分类任务中一条数据可能有多个标签，每个标签可能有两个或者多个类别。例如，一篇新闻可能同时归类为"娱乐"和"运动"，也可能只属于"娱乐"或者其它类别。    
 <img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/01b.png" width="700">
 
-<br/><br/>
+<br/>
 
 ## 二、算法
 
