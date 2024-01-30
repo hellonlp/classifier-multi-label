@@ -1,10 +1,7 @@
 # Text Classification Multi-Label: 多标签文本分类
 [![Python](https://img.shields.io/badge/python-3.7.6-blue?logo=python&logoColor=FED643)](https://www.python.org/downloads/release/python-376/)
 [![Pytorch](https://img.shields.io/badge/tensorflow-1.15.0-red?logo=tensorflow)](https://www.tensorflow.org/versions/)     
-
 <img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/HELLONLP.png" width="800">
-
-<br/>
 
 ## 一、简介
 ### 1. 多元分类
