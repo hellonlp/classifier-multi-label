@@ -2,7 +2,11 @@
 [![Python](https://img.shields.io/badge/python-3.7.6-blue?logo=python&logoColor=FED643)](https://www.python.org/downloads/release/python-376/)
 [![Pytorch](https://img.shields.io/badge/tensorflow-1.15.0-red?logo=tensorflow)](https://www.tensorflow.org/versions/)     
 
+<br/>
 
+<img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/HELLONLP.png" width="800">
+
+<br/>
 
 ## 一、简介
 ### 1. 多元分类
@@ -10,9 +14,6 @@
 ### 2. 多标签分类
    多标签分类任务中一条数据可能有多个标签，每个标签可能有两个或者多个类别。例如，一篇新闻可能同时归类为"娱乐"和"运动"，也可能只属于"娱乐"或者其它类别。    
 
-<br/>
-
-<img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/01b.png" width="800">
 <br/>
 
 <img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/02.png" width="800">
