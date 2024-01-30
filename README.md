@@ -4,7 +4,7 @@
 
 <br/>
 
-<img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/HELLONLP.png" width="800">
+<img src="https://github.com/hellonlp/classifier-multi-label/blob/master/imgs/01b.png" width="800">
 
 <br/>
 
