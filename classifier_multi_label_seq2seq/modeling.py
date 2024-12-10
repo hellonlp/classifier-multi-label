@@ -3,13 +3,14 @@
 For a description of the algorithm, see https://arxiv.org/abs/1909.11942.
 """
 
-import collections
+
+import re
+import six
 import copy
 import json
 import math
-import re
 import numpy as np
-import six
+import collections
 from six.moves import range
 import tensorflow as tf
 from tensorflow.contrib import layers as contrib_layers
