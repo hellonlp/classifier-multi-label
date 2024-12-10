@@ -12,6 +12,7 @@ pwd = os.path.dirname(os.path.abspath(__file__))
 import sys
 sys.path.append(os.path.dirname(os.path.dirname(__file__)))
 import tensorflow as tf
+
 from classifier_multi_label_seq2seq.networks import NetworkAlbertSeq2Seq
 from classifier_multi_label_seq2seq.hyperparameters import Hyperparamters as hp
 from classifier_multi_label_seq2seq.classifier_utils import get_feature_test
