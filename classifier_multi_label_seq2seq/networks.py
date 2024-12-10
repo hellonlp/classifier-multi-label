@@ -7,6 +7,7 @@ Created on Wed Jul  8 20:03:12 2020
 
 import os
 import tensorflow as tf
+
 from classifier_multi_label_seq2seq import modeling
 from classifier_multi_label_seq2seq import optimization
 from classifier_multi_label_seq2seq.modules import encoder, decoder
@@ -46,7 +47,6 @@ class NetworkAlbertSeq2Seq(object):
 
         # Hidden_size
         self.hidden_size = self.output_layer_initial.shape[-1].value
-        print('hidden_size:', self.hidden_size)  # 768
 
         with tf.name_scope("Encoder"):
             # Get input length of encoder 
