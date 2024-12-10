@@ -7,6 +7,7 @@ Created on Thu May 30 20:44:42 2021
 
 import os
 import tensorflow as tf
+
 from classifier_multi_label_denses import modeling
 from classifier_multi_label_denses import optimization
 from classifier_multi_label_denses.utils import time_now_string
@@ -14,12 +15,10 @@ from classifier_multi_label_denses.hyperparameters import Hyperparamters as hp
 from classifier_multi_label_denses.classifier_utils import ClassifyProcessor
 
 
-
 num_labels = hp.num_labels
 processor = ClassifyProcessor() 
 bert_config_file = os.path.join(hp.bert_path,'albert_config.json')
 bert_config = modeling.AlbertConfig.from_json_file(bert_config_file)
-
 
 
 class NetworkAlbert(object):
@@ -58,7 +57,7 @@ class NetworkAlbert(object):
             	              "output_weights%s"%str(i), [2, hidden_size],
             	              initializer=tf.truncated_normal_initializer(stddev=0.02))        
                 output_bias = tf.get_variable(
-            	              "output_bias%s"%str(i), [2], initializer=tf.zeros_initializer())# 
+            	              "output_bias%s"%str(i), [2], initializer=tf.zeros_initializer())
                 logits = tf.matmul(output_layer, output_weights, transpose_b=True)
                 logits = tf.nn.bias_add(logits, output_bias)
                 logits_num_label.append(logits)
@@ -68,7 +67,6 @@ class NetworkAlbert(object):
             self.logits_num_label = tf.transpose(tf.stack(logits_num_label, 0),[1,0,2])
             self.loss_num_label = tf.stack(loss_num_label, 0)
             self.probabilities = tf.nn.sigmoid(self.logits_num_label)
-
 
         with tf.variable_scope("Prediction"):             
             # Prediction               
@@ -118,20 +116,9 @@ class NetworkAlbert(object):
                 # Summary for tensorboard                 
                 tf.summary.scalar('loss', self.loss)
                 self.merged = tf.summary.merge_all()
-                
-                
-                
+                                
                 
 if __name__ == '__main__':
     # Load model
     albert = NetworkAlbert(is_training=True)
-
-
-
-
-
-
-
-
-
 
